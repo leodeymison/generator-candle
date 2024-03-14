@@ -32,11 +32,6 @@
                     <h5 class="pb-2">Configurações de layout</h5>
                     <div class="row g-3">
                         <div class="col-md-4">
-                            <label class="form-label">Imagem de fundo</label>
-                            <input id="av_backImage" placeholder="https://..." type="text" class="form-control"
-                                id="back">
-                        </div>
-                        <div class="col-md-4">
                             <label class="form-label">Cor do card</label>
                             <input id="av_cardColor" type="color" class="form-control" id="back">
                         </div>
@@ -165,7 +160,6 @@
         $("#list").append(itemClone);
     })
 
-    document.getElementById("av_backImage").value = localStorage.getItem("av_backImage") ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4sCGaV7DSDtRmCEn1WefSR16Hkq0hqwjcdg&usqp=CAU";
     document.getElementById("av_cardColor").value = localStorage.getItem("av_cardColor") ?? "#05167d";
     document.getElementById("av_cardColor2").value = localStorage.getItem("av_cardColor2") ?? "#05167d";
     document.getElementById("av_colorText").value = localStorage.getItem("av_colorText") ?? "#ffffff";
@@ -177,7 +171,6 @@
     document.getElementById("av_efectSom").value = localStorage.getItem("av_efectSom") ?? "https://moneyia.app/multi/wp-content/uploads/sites/2/2023/08/hackdobem.mp3";
 
     function addLayouts() {
-        localStorage.setItem("av_backImage", document.getElementById("av_backImage").value);
         localStorage.setItem("av_cardColor", document.getElementById("av_cardColor").value);
         localStorage.setItem("av_cardColor2", document.getElementById("av_cardColor2").value);
         localStorage.setItem("av_colorText", document.getElementById("av_colorText").value);
