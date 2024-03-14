@@ -5,11 +5,194 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CONFIG | Gerador de sinais</title>
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-
+    <div class="container pt-4">
+        <div class="d-flex justify-content-center">
+            <h1>Configurações</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-xl">
+                <div class="card col-md-12 p-3 my-4">
+                    <h5 class="pb-2">Configurações de layout</h5>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Imagem de fundo</label>
+                            <input id="av_backImage" placeholder="https://..." type="text" class="form-control"
+                                id="back">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Cor do card</label>
+                            <input id="av_cardColor" type="color" class="form-control" id="back">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Cor do card na área do botão</label>
+                            <input id="av_cardColor2" type="color" class="form-control" id="back">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Cor do texto</label>
+                            <input id="av_colorText" type="color" class="form-control" id="back">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Cor do botão de chamada</label>
+                            <input id="av_colorBtn" type="color" class="form-control" id="back">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Cor do texto do botão de chamada</label>
+                            <input id="av_colorTextBtn" type="color" class="form-control" id="back">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Texto do botão de chamada</label>
+                            <input id="av_btnText" type="text" class="form-control" id="back">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Cor da barra de progresso</label>
+                            <input id="av_colorProgress" type="color" class="form-control" id="back">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Link do som ao clicar</label>
+                            <input id="av_efectSom" type="text" class="form-control" id="back">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary" onclick="addLayouts()">Salvar</button>
+                    </div>
+                </div>
+                <div class="card col-md-12 p-3 my-4">
+                    <h5 class="pb-2">Configurações de times</h5>
+                    <div class="row g-3">
+                        <div class="col-md-4 mb-2">
+                            <label class="form-label">Tempo da barra de progresso (Em Segundos)</label>
+                            <input id="av_time" type="number" class="form-control" id="back">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Tempo de espera para liberar botão (Em Segundos)</label>
+                            <input id="av_time_next" type="number" class="form-control" id="back">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary" onclick="addTimes()">Salvar</button>
+                    </div>
+                </div>
+                <div class="card col-md-12 p-3 my-4">
+                    <h5 class="pb-2">Configurações dos tempos e velas</h5>
+                    <div class="row g-3">
+                        <div>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label">Tempo da barra de progresso (Em Segundos)</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Nome da cor</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Cor da vela</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="list" class="mb-2">
+                            <div class="row g-3 item-clone mb-2">
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control clone-time">
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control clone-name">
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="color" class="form-control clone-color">
+                                </div>
+                                <div class="col-md-2 d-flex align-items-end">
+                                    <button class="btn btn-danger">Remover</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="btn btn-success" id="add-item">Adicionar</span>
+                            <button class="btn btn-primary" onclick="addListTimes()">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+<script>
+    $(document).on('click', "#add-item", function () {
+        let itemClone = $(".item-clone").clone();
+
+        $("#list").append(itemClone);
+    })
+
+    document.getElementById("av_backImage").value = localStorage.getItem("av_backImage") ?? "";
+    document.getElementById("av_cardColor").value = localStorage.getItem("av_cardColor") ?? "";
+    document.getElementById("av_cardColor2").value = localStorage.getItem("av_cardColor2") ?? "";
+    document.getElementById("av_colorText").value = localStorage.getItem("av_colorText") ?? "";
+    document.getElementById("av_colorBtn").value = localStorage.getItem("av_colorBtn") ?? "";
+    document.getElementById("av_colorTextBtn").value = localStorage.getItem("av_colorTextBtn") ?? "";
+    document.getElementById("av_btnText").value = localStorage.getItem("av_btnText") ?? "";
+    document.getElementById("av_colorProgress").value = localStorage.getItem("av_colorProgress") ?? "";
+    document.getElementById("av_efectSom").value = localStorage.getItem("av_efectSom") ?? "";
+
+    function addLayouts() {
+        localStorage.setItem("av_backImage", document.getElementById("av_backImage").value);
+        localStorage.setItem("av_cardColor", document.getElementById("av_cardColor").value);
+        localStorage.setItem("av_cardColor2", document.getElementById("av_cardColor2").value);
+        localStorage.setItem("av_colorText", document.getElementById("av_colorText").value);
+        localStorage.setItem("av_colorBtn", document.getElementById("av_colorBtn").value);
+        localStorage.setItem("av_colorTextBtn", document.getElementById("av_colorTextBtn").value);
+        localStorage.setItem("av_btnText", document.getElementById("av_btnText").value);
+        localStorage.setItem("av_colorProgress", document.getElementById("av_colorProgress").value);
+        localStorage.setItem("av_efectSom", document.getElementById("av_efectSom").value);
+
+        alert("Dados salvos com sucesso!")
+    }
+
+    document.getElementById("av_time").value = localStorage.getItem("av_time") ?? "";
+    document.getElementById("av_time_next").value = localStorage.getItem("av_time_next") ?? "";
+
+    function addTimes() {
+        localStorage.setItem("av_time", document.getElementById("av_time").value);
+        localStorage.setItem("av_time_next", document.getElementById("av_time_next").value);
+        alert("Dados salvos com sucesso!")
+    }
+    function addListTimes() {
+        console.log("Entrou")
+        // tempo, nome e cor
+        const times = document.querySelectorAll(".clone-time");
+        const names = document.querySelectorAll(".clone-name");
+        const colors = document.querySelectorAll(".clone-color");
+        let list = [];
+
+        times.forEach((element, index) => {
+            if (!!times[index].value && !!names[index].value && !!colors[index].value) {
+                list.push({
+                    times: times[index].value,
+                    names: names[index].value,
+                    colors: colors[index].value
+                })
+                localStorage.setItem("av-list", JSON.stringify(list))
+                return alert("Dados salvos com sucesso!")
+            } else {
+                return alert("Todos os dados obrigatorios")
+            }
+        });
+    }
+</script>
 
 </html>
