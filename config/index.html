@@ -161,15 +161,15 @@
         $("#list").append(itemClone);
     })
 
-    document.getElementById("av_backImage").value = localStorage.getItem("av_backImage") ?? "";
-    document.getElementById("av_cardColor").value = localStorage.getItem("av_cardColor") ?? "";
-    document.getElementById("av_cardColor2").value = localStorage.getItem("av_cardColor2") ?? "";
-    document.getElementById("av_colorText").value = localStorage.getItem("av_colorText") ?? "";
-    document.getElementById("av_colorBtn").value = localStorage.getItem("av_colorBtn") ?? "";
-    document.getElementById("av_colorTextBtn").value = localStorage.getItem("av_colorTextBtn") ?? "";
-    document.getElementById("av_btnText").value = localStorage.getItem("av_btnText") ?? "";
-    document.getElementById("av_colorProgress").value = localStorage.getItem("av_colorProgress") ?? "";
-    document.getElementById("av_efectSom").value = localStorage.getItem("av_efectSom") ?? "";
+    document.getElementById("av_backImage").value = localStorage.getItem("av_backImage") ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4sCGaV7DSDtRmCEn1WefSR16Hkq0hqwjcdg&usqp=CAU";
+    document.getElementById("av_cardColor").value = localStorage.getItem("av_cardColor") ?? "#05167d";
+    document.getElementById("av_cardColor2").value = localStorage.getItem("av_cardColor2") ?? "#05167d";
+    document.getElementById("av_colorText").value = localStorage.getItem("av_colorText") ?? "white";
+    document.getElementById("av_colorBtn").value = localStorage.getItem("av_colorBtn") ?? "#00ff59";
+    document.getElementById("av_colorTextBtn").value = localStorage.getItem("av_colorTextBtn") ?? "white";
+    document.getElementById("av_btnText").value = localStorage.getItem("av_btnText") ?? "GERAR NOVO TEMPO DE VELA";
+    document.getElementById("av_colorProgress").value = localStorage.getItem("av_colorProgress") ?? "#0d6efd";
+    document.getElementById("av_efectSom").value = localStorage.getItem("av_efectSom") ?? "https://moneyia.app/multi/wp-content/uploads/sites/2/2023/08/hackdobem.mp3";
 
     function addLayouts() {
         localStorage.setItem("av_backImage", document.getElementById("av_backImage").value);
