@@ -117,9 +117,10 @@
                                     <input type="color" class="form-control clone-color">
                                 </div>
                                 <div class="col-md-2 d-flex align-items-end">
-                                    <button class="btn btn-danger">Remover</button>
+                                    <button class="btn btn-danger remove-btn">Remover</button>
                                 </div>
                             </div>
+
                         </div>
                         <div class="d-flex justify-content-between">
                             <span class="btn btn-success" id="add-item">Adicionar</span>
@@ -133,8 +134,29 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
 <script>
+    $(document).ready(function () {
+        const list = localStorage.getItem("av-list");
+        if (list) {
+            console.log(JSON.parse(list))
+            JSON.parse(list).forEach(element => {
+                const itemClone = $(".item-clone").first().clone();
+
+                itemClone.find(".clone-time").val(element.times)
+                itemClone.find(".clone-name").val(element.names)
+                itemClone.find(".clone-color").val(element.colors)
+
+                $("#list").append(itemClone);
+            });
+
+            $(".item-clone").first().remove();
+        }
+    })
+    $(document).on('click', ".remove-btn", function () {
+        console.log("Entrou")
+        $(this).closest('.item-clone').remove();
+    })
     $(document).on('click', "#add-item", function () {
-        let itemClone = $(".item-clone").clone();
+        let itemClone = $(".item-clone").first().clone();
 
         $("#list").append(itemClone);
     })
@@ -172,7 +194,6 @@
         alert("Dados salvos com sucesso!")
     }
     function addListTimes() {
-        console.log("Entrou")
         // tempo, nome e cor
         const times = document.querySelectorAll(".clone-time");
         const names = document.querySelectorAll(".clone-name");
@@ -187,11 +208,11 @@
                     colors: colors[index].value
                 })
                 localStorage.setItem("av-list", JSON.stringify(list))
-                return alert("Dados salvos com sucesso!")
             } else {
                 return alert("Todos os dados obrigatorios")
             }
         });
+        return alert("Dados salvos com sucesso!")
     }
 </script>
 

@@ -40,10 +40,12 @@
                             </div>
                         </div>
                     </div>
-                    <div id="result">INDICADOR: --</div>
+                    <div id="result">INDICADOR: <span id="indicator-value">--</span></div>
                 </div>
-                <div class="item-end" id="box-button" onclick="start()">
-                    <button id="av_btn" class="btn btn-success">GERAR NOVO TEMPO DE VELA</button>
+                <div class="item-end" id="box-button">
+                    <button onclick="start()" id="av_btn" class="btn btn-success">GERAR NOVO TEMPO DE VELA</button>
+                    <button style="display: none;" id="av_btn_dis" class="btn btn-secondary">GERAR NOVO TEMPO DE
+                        VELA</button>
                 </div>
             </div>
         </section>
@@ -65,13 +67,6 @@
     document.getElementById("av_btn").style.color = localStorage.getItem("av_colorTextBtn") ?? "white";
     document.getElementById("av_btn").innerHTML = localStorage.getItem("av_btnText") ?? "GERAR NOVO TEMPO DE VELA";
     document.getElementById("pb1").style.backgroundColor = localStorage.getItem("av_colorProgress") ?? "";
-</script>
-<script>
-    document.getElementById("av_btn").addEventListener("click", function () {
-        var audio = document.getElementById("meuAudio");
-        audio.currentTime = 0;  // Reinicia o áudio para o início
-        audio.play();  // Inicia a reprodução
-    });
 </script>
 <script src="./scripts.js"></script>
 
