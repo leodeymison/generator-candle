@@ -34,6 +34,8 @@ body {
     border: none;
     background-color: #0000;
     z-index: 3;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 /* BUTTON */
@@ -127,6 +129,68 @@ body {
     #main section .card, .iframegerador {
         width: 90%;
     }
+    #main section .card .content {
+        padding-top: 40%;
+        height: auto;
+        padding-bottom: 23%;
+    }
+    
+}
+@media (max-width: 470px){
+    #main section .card .content {
+        padding-bottom: 20%;
+    }
+    
+}
+@media (max-width: 450px){
+    #main section .card .content {
+        padding-bottom: 18%;
+    }
+    
+}
+@media (max-width: 430px){
+    #main section .card .content {
+        padding-bottom: 15%;
+    }
+    
+}
+@media (max-width: 410px){
+    #main section .card .content {
+        padding-bottom: 12%;
+    }
+    
+}
+@media (max-width: 400px){
+    #main section .card .content {
+        padding-top: 38%;
+        padding-bottom: 9%;
+    }
+    
+}
+@media (max-width: 380px){
+    #main section .card .content {
+        padding-top: 36%;
+        padding-bottom: 9%;
+    }
+    
+}
+@media (max-width: 360px){
+    #main section .card .content {
+        padding-bottom: 6%;
+    }
+}
+@media (max-width: 340px){
+    #main section .card .content {
+        padding-top: 34%;
+        padding-bottom: 6%;
+    }
+    
+}
+@media (max-width: 320px){
+    #main section .card .content {
+        padding-bottom: 3%;
+    }
+    
 }
 
 main {
