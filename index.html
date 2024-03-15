@@ -24,13 +24,10 @@
 <body>
     <div id="main">
         <section>
-            <div class="card">
+            <div class="card" id="card">
                 <div class="content" id="box-content">
                     <div id="title" class="title">TEMPO ENCONTRADO:</div>
                     <div id="time"><span id="time-value">--</span> segundos</div>
-                    <div id="logo">
-                        <img src="./images/logo.png" alt="">
-                    </div>
                     <div class="box-progress">
                         <div class="progress">
                             <div id="pb1" class="progress-bar progress-bar-striped d-flex align-items-end">
@@ -57,8 +54,7 @@
     crossorigin="anonymous"></script>
 <script>
     document.getElementById("meuAudio").src = localStorage.getItem("av_efectSom") ?? "https://moneyia.app/multi/wp-content/uploads/sites/2/2023/08/hackdobem.mp3";
-    document.getElementById("box-content").style.backgroundColor = localStorage.getItem("av_cardColor") ?? "#05167d";
-    document.getElementById("box-button").style.backgroundColor = localStorage.getItem("av_cardColor2") ?? "#01106b";
+    document.getElementById("card").style.backgroundImage = `url('${localStorage.getItem('av_cardBackground') ?? './images/background.png'}')`;
     document.getElementById("title").style.color = localStorage.getItem("av_colorText") ?? "#ffffff";
     document.getElementById("time").style.color = localStorage.getItem("av_colorTextTime") ?? "#00ff59";
     document.getElementById("result").style.color = localStorage.getItem("av_colorText") ?? "#ffffff";

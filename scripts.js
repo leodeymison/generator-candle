@@ -35,16 +35,7 @@ function som(){
     audio.currentTime = 0;  // Reinicia o áudio para o início
     audio.play();  // Inicia a reprodução
 }
-function sort(){
-    const list = localStorage.getItem("av-list") ?? [];
-    if (list.length > 0) {
-        const sort = JSON.parse(list);
-        const randing = getRandomInt(0, sort.length)
-        console.log(sort, randing);
-        document.getElementById("time-value").innerHTML = sort[randing].times
-        document.getElementById("indicator-value").innerHTML = sort[randing].names
-    }
-}
+
 function timer(){
     document.getElementById("time-value").innerHTML = "--"
     document.getElementById("indicator-value").innerHTML = "--"
@@ -67,9 +58,19 @@ function timer(){
     }, (time * 1000) / 100) 
 
     setTimeout(() => {
+        sort_func();
         clearInterval(intBar)
-        sort();
     }, time * 1000)
+}
+
+function sort_func(){
+    const list = localStorage.getItem("av-list") ?? [];
+    if (list.length > 0) {
+        const sort = JSON.parse(list);
+        const randing = getRandomInt(0, sort.length)
+        document.getElementById("time-value").innerHTML = sort[randing].times
+        document.getElementById("indicator-value").innerHTML = sort[randing].names
+    }
 }
 
 
@@ -87,7 +88,6 @@ noStroke();
 colorMode(HSB, 360, 100, 50, .1);
 createCanvas(window.innerWidth, window.innerHeight);
 for (var i = 0; i < tiles; i++) {
-    console.log(width / tileSize);
     x += tileSize;
     var y = round(random(height / dropspeed) * tileSize) - window.innerHeight;
     var r = tileSize;

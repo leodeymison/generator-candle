@@ -56,8 +56,8 @@ body {
 #main section .card .content {
     height: 500px;
     width: 100%;
-    background-color: brown;
     border-radius: 10px 10px 0px 0px;
+    padding-top: 200px;
 }
 
 /* TIMER */
