@@ -37,19 +37,23 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Cor do texto</label>
-                            <input id="av_colorText" type="color" class="form-control">
+                            <input id="av_colorText" type="color" class="form-control input-color">
+                            <p id="av_colorText-i" class="text-color">#aaaaaa</p>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Cor do texto de tempo</label>
-                            <input id="av_colorTextTime" type="color" class="form-control">
+                            <input id="av_colorTextTime" type="color" class="form-control input-color">
+                            <p id="av_colorTextTime-i" class="text-color">#aaaaaa</p>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Cor do botão de chamada</label>
-                            <input id="av_colorBtn" type="color" class="form-control">
+                            <input id="av_colorBtn" type="color" class="form-control input-color">
+                            <p id="av_colorBtn-i" class="text-color">#aaaaaa</p>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Cor do texto do botão de chamada</label>
-                            <input id="av_colorTextBtn" type="color" class="form-control">
+                            <input id="av_colorTextBtn" type="color" class="form-control input-color">
+                            <p id="av_colorTextBtn-i" class="text-color">#aaaaaa</p>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Texto do botão de chamada</label>
@@ -57,7 +61,8 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Cor da barra de progresso</label>
-                            <input id="av_colorProgress" type="color" class="form-control">
+                            <input id="av_colorProgress" type="color" class="form-control input-color">
+                            <p id="av_colorProgress-i" class="text-color">#aaaaaa</p>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Link do som ao clicar</label>
@@ -146,6 +151,9 @@
             $(".item-clone").first().remove();
         }
     })
+    $(document).on('change', ".input-color", function (e) {
+        $(this).closest('.col-md-4').find(".text-color").text(e.target.value)
+    })
     $(document).on('click', ".remove-btn", function () {
         console.log("Entrou")
         $(this).closest('.item-clone').remove();
@@ -158,11 +166,16 @@
 
     document.getElementById("av_cardBackground").value = localStorage.getItem("av_cardBackground") ?? "./images/background.png";
     document.getElementById("av_colorText").value = localStorage.getItem("av_colorText") ?? "#ffffff";
+    document.getElementById("av_colorText-i").innerHTML = localStorage.getItem("av_colorText") ?? "#ffffff";
     document.getElementById("av_colorBtn").value = localStorage.getItem("av_colorBtn") ?? "#00ff59";
+    document.getElementById("av_colorBtn-i").innerHTML = localStorage.getItem("av_colorBtn") ?? "#00ff59";
     document.getElementById("av_colorTextTime").value = localStorage.getItem("av_colorTextTime") ?? "#00ff59";
+    document.getElementById("av_colorTextTime-i").innerHTML = localStorage.getItem("av_colorTextTime") ?? "#00ff59";
     document.getElementById("av_colorTextBtn").value = localStorage.getItem("av_colorTextBtn") ?? "#ffffff";
     document.getElementById("av_btnText").value = localStorage.getItem("av_btnText") ?? "GERAR NOVO TEMPO DE VELA";
+    document.getElementById("av_btnText-i").innerHTML = localStorage.getItem("av_btnText") ?? "GERAR NOVO TEMPO DE VELA";
     document.getElementById("av_colorProgress").value = localStorage.getItem("av_colorProgress") ?? "#0d6efd";
+    document.getElementById("av_colorProgress-i").innerHTML = localStorage.getItem("av_colorProgress") ?? "#0d6efd";
     document.getElementById("av_efectSom").value = localStorage.getItem("av_efectSom") ?? "https://moneyia.app/multi/wp-content/uploads/sites/2/2023/08/hackdobem.mp3";
 
     function addLayouts() {
