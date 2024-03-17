@@ -1,11 +1,7 @@
 function start(){
-    if(localStorage.getItem("av-list")){
-        desabledBtn();
-        som();
-        timer();
-    } else {
-        alert("Preencha os dados de Configuração para tempos de vela")
-    }
+    desabledBtn();
+    som();
+    timer();
 }
 function getRandomInt(min, max) {
     min = Math.ceil(min);
