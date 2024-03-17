@@ -17,7 +17,7 @@ function desabledBtn(){
     document.getElementById("av_btn").style.display = "none";
 }
 function ableddBtn(){
-    const secunds = localStorage.getItem("av_time_next") ?? 15;
+    const secunds = 15;
     let count = 1;
     let intBar = setInterval(function (){
         document.getElementById("av_btn_dis").innerHTML = `AGUARDE (${secunds - count}s)`;
@@ -65,46 +65,51 @@ function timer(){
 
 function sort_func(){
     const list = [
-        {names: `VELA AZUL`, times: 1},
-        {names: `VELA AZUL`, times: 2},
-        {names: `VELA AZUL`, times: 3},
-        {names: `VELA ROXA`, times: 10},
-        {names: `VELA ROXA`, times: 11},
-        {names: `VELA ROXA`, times: 12},
-        {names: `VELA ROXA`, times: 13},
-        {names: `VELA ROXA`, times: 14},
-        {names: `VELA ROXA`, times: 15},
-        {names: `VELA ROXA`, times: 16},
-        {names: `VELA ROXA`, times: 17},
-        {names: `VELA ROXA`, times: 18},
-        {names: `VELA ROXA`, times: 19},
-        {names: `VELA ROXA`, times: 20},
-        {names: `VELA ROSA`, times: 40},
-        {names: `VELA ROSA`, times: 41},
-        {names: `VELA ROSA`, times: 42},
-        {names: `VELA ROSA`, times: 43},
-        {names: `VELA ROSA`, times: 44},
-        {names: `VELA ROSA`, times: 45},
-        {names: `VELA ROSA`, times: 46},
-        {names: `VELA ROSA`, times: 47},
-        {names: `VELA ROSA`, times: 48},
-        {names: `VELA ROSA`, times: 49},
-        {names: `VELA ROSA`, times: 50},
-        {names: `VELA ROSA`, times: 51},
-        {names: `VELA ROSA`, times: 52},
-        {names: `VELA ROSA`, times: 53},
-        {names: `VELA ROSA`, times: 54},
-        {names: `VELA ROSA`, times: 55},
-        {names: `VELA ROSA`, times: 56},
-        {names: `VELA ROSA`, times: 57},
-        {names: `VELA ROSA`, times: 58},
-        {names: `VELA ROSA`, times: 59},
-        {names: `VELA ROSA`, times: 60},
+        {names: `VELA AZUL`, times: 1, colors: "#008dff"},
+        {names: `VELA AZUL`, times: 2, colors: "#008dff"},
+        {names: `VELA AZUL`, times: 3, colors: "#008dff"},
+        {names: `VELA ROXA`, times: 10, colors: "#939"},
+        {names: `VELA ROXA`, times: 11, colors: "#939"},
+        {names: `VELA ROXA`, times: 12, colors: "#939"},
+        {names: `VELA ROXA`, times: 13, colors: "#939"},
+        {names: `VELA ROXA`, times: 14, colors: "#939"},
+        {names: `VELA ROXA`, times: 15, colors: "#939"},
+        {names: `VELA ROXA`, times: 16, colors: "#939"},
+        {names: `VELA ROXA`, times: 17, colors: "#939"},
+        {names: `VELA ROXA`, times: 18, colors: "#939"},
+        {names: `VELA ROXA`, times: 19, colors: "#939"},
+        {names: `VELA ROXA`, times: 20, colors: "#939"},
+        {names: `VELA ROSA`, times: 40, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 41, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 42, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 43, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 44, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 45, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 46, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 47, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 48, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 49, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 50, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 51, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 52, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 53, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 54, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 55, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 56, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 57, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 58, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 59, colors: "#fb93b3"},
+        {names: `VELA ROSA`, times: 60, colors: "#fb93b3"},
     ];
     if (list.length > 0) {
         const randing = getRandomInt(0, list.length)
         document.getElementById("time-value").innerHTML = list[randing].times
-        document.getElementById("indicator-value").innerHTML = list[randing].names
+        let indicatorValue = document.getElementById("indicator-value");
+        indicatorValue.innerHTML = list[randing].names;
+        indicatorValue.innerHTML += `<svg style="margin-top: -3px" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="mx-1 bi bi-flag-fill" viewBox="0 0 16 16">
+            <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001"/>
+        </svg>`;
+        indicatorValue.style.color = list[randing].colors
     }
 }
 
