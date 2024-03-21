@@ -192,14 +192,12 @@ body {
 }
 @media (max-width: 400px){
     #main section .card .content {
-        padding-top: 38%;
         padding-bottom: 9%;
     }
     
 }
 @media (max-width: 380px){
     #main section .card .content {
-        padding-top: 36%;
         padding-bottom: 9%;
     }
     
@@ -211,7 +209,6 @@ body {
 }
 @media (max-width: 340px){
     #main section .card .content {
-        padding-top: 34%;
         padding-bottom: 6%;
     }
     
