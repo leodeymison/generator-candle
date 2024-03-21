@@ -26,8 +26,12 @@
         <section>
             <div class="card" id="card">
                 <div class="content" id="box-content">
+                    <div id="icon-top">
+                        <img src="./images/icon-1.png" alt="">
+                    </div>
                     <div id="title" class="title">TEMPO ENCONTRADO:</div>
-                    <div id="time"><span id="time-value">--</span> segundos</div>
+                    <div id="time"><span id="time-value">08</span>segundos</div>
+                    <div id="result" class="result"><span id="indicator-value">--</span></div>
                     <div class="box-progress">
                         <div class="progress">
                             <div id="pb1" class="progress-bar progress-bar-striped d-flex align-items-end">
@@ -37,7 +41,11 @@
                             </div>
                         </div>
                     </div>
-                    <div id="result">INDICADOR: <span id="indicator-value">--</span></div>
+                    <p class="p1">RODADA Nº <span style="color: aqua;" id="quant">
+                            <script>document.getElementById("quant").innerHTML = ((Date.now() / 1000).toFixed(0)).substring(3)</script>
+                        </span></p>
+                    <br>
+                    <!-- <div class="result">QUALIDADE: <span>Boa</span></div> -->
                 </div>
                 <div class="item-end" id="box-button">
                     <button onclick="start()" id="av_btn" class="btn btn-success">GERAR NOVO TEMPO DE VELA</button>
@@ -57,16 +65,17 @@
     crossorigin="anonymous"></script>
 <script>
     document.getElementById("meuAudio").src = localStorage.getItem("av_efectSom") ?? "https://moneyia.app/multi/wp-content/uploads/sites/2/2023/08/hackdobem.mp3";
-    document.getElementById("card").style.backgroundImage = `url('${localStorage.getItem('av_cardBackground') ?? './images/background.png'}')`;
+    // document.getElementById("card").style.backgroundImage = `url('${localStorage.getItem('av_cardBackground') ?? './images/background.png'}')`;
     document.getElementById("title").style.color = localStorage.getItem("av_colorText") ?? "#ffffff";
     document.getElementById("time").style.color = localStorage.getItem("av_colorTextTime") ?? "#00ff59";
+    document.getElementById("time-value").style.webkitTextStroke = `2px ${localStorage.getItem("av_colorTextTime") ?? "#00ff59"}`;
     document.getElementById("result").style.color = localStorage.getItem("av_colorText") ?? "#ffffff";
     document.getElementById("av_btn").style.backgroundColor = localStorage.getItem("av_colorBtn") ?? "#00ff59";
     document.getElementById("av_btn").style.color = localStorage.getItem("av_colorTextBtn") ?? "#ffffff";
     document.getElementById("av_btn").innerHTML = localStorage.getItem("av_btnText") ?? "GERAR NOVO TEMPO DE VELA";
-    document.getElementById("pb1").style.backgroundColor = "#000";
+    document.getElementById("pb1").style.backgroundColor = localStorage.getItem("av_colorProgress") ?? "#0d6efd";
 </script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js'></script>
-<script src="./scripts2.js"></script>
+<script src="./scripts.js"></script>
 
 </html>

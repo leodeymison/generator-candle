@@ -27,6 +27,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 5rem 0 2rem 0;
+    position: relative;
 }
 
 #main section .card {
@@ -34,8 +35,10 @@ body {
     border: none;
     background-color: #0000;
     z-index: 3;
-    background-size: 100%;
-    background-repeat: no-repeat;
+    background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210920/pngtree-red-pattern-wine-red-texture-image_892413.jpg');
+    padding-top: 70px;
+    border-radius: 15px;
+    border: solid 1px #ffd500;
 }
 
 /* BUTTON */
@@ -45,7 +48,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 15px 15px;
+    background-image: url('https://img.freepik.com/fotos-gratis/abstrato-de-luxo-macio-fundo-vermelho-design-de-layout-de-dia-dos-namorados-de-natal-modelo-de-web-de-estudio-relatorio-de-negocios-com-cor-gradiente-de-circulo-suave_1258-101807.jpg?size=338&ext=jpg&ga=GA1.1.735520172.1710892800&semt=ais');
+    border: solid 1px #ffd500;
 }
 #main section .card .item-end button {
     width: 90%;
@@ -56,15 +61,23 @@ body {
 }
 /* CONTENT */
 #main section .card .content {
-    height: 500px;
+    min-height: 300px;
     width: 100%;
-    border-radius: 10px 10px 0px 0px;
-    padding-top: 200px;
+}
+#icon-top {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: -80px;
+}
+#icon-top img {
+    height: 170px;
 }
 
 /* TIMER */
 .box-progress {
-    padding: 0.5rem 10%;
+    padding: 0.5rem 10% 0rem 10%;
 }
 .progress {
     height: 30px !important;
@@ -92,13 +105,31 @@ body {
 
 #time {
     text-align: center;
-    font-size: 38px;
+    font-size: 28px;
     padding: 0 1rem;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+}
+.p1 {
+    text-align: center;
+    font-size: 15px;
+    text-align: center;
+    color: white;
+    margin: 10px 0px 0px 0px;
+}
+#time-value {
+    font-size: 68px;
+    color: transparent; 
+    line-height: 60px;
+    font-weight: 600;
 }
 
-#result {
+.result {
     text-align: center;
-    padding: 0 1rem;
+    padding: 1rem 1rem;
+    font-size: 20px;
+    color: white;
 }
 
 #logo {
@@ -130,7 +161,6 @@ body {
         width: 90%;
     }
     #main section .card .content {
-        padding-top: 40%;
         height: auto;
         padding-bottom: 23%;
     }
