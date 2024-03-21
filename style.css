@@ -38,7 +38,7 @@ body {
     background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210920/pngtree-red-pattern-wine-red-texture-image_892413.jpg');
     padding-top: 70px;
     border-radius: 15px;
-    border: solid 1px #ffd500;
+    border: solid 1px #FFAB00;
 }
 
 /* BUTTON */
@@ -50,7 +50,7 @@ body {
     align-items: center;
     border-radius: 0px 0px 15px 15px;
     background-image: url('https://img.freepik.com/fotos-gratis/abstrato-de-luxo-macio-fundo-vermelho-design-de-layout-de-dia-dos-namorados-de-natal-modelo-de-web-de-estudio-relatorio-de-negocios-com-cor-gradiente-de-circulo-suave_1258-101807.jpg?size=338&ext=jpg&ga=GA1.1.735520172.1710892800&semt=ais');
-    border: solid 1px #ffd500;
+    border: solid 1px #FFAB00;
 }
 #main section .card .item-end button {
     width: 90%;
