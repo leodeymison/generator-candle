@@ -41,7 +41,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="p1">RODADA Nº <span style="color: aqua;" id="quant">
+                    <p class="p1">RODADA Nº <span style="color: #FFAB00;" id="quant">
                             <script>document.getElementById("quant").innerHTML = ((Date.now() / 1000).toFixed(0)).substring(3)</script>
                         </span></p>
                     <br>
@@ -64,16 +64,16 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 <script>
-    document.getElementById("meuAudio").src = localStorage.getItem("av_efectSom") ?? "https://moneyia.app/multi/wp-content/uploads/sites/2/2023/08/hackdobem.mp3";
+    document.getElementById("meuAudio").src = "https://moneyia.app/multi/wp-content/uploads/sites/2/2023/08/hackdobem.mp3";
     // document.getElementById("card").style.backgroundImage = `url('${localStorage.getItem('av_cardBackground') ?? './images/background.png'}')`;
-    document.getElementById("title").style.color = localStorage.getItem("av_colorText") ?? "#ffffff";
+    document.getElementById("title").style.color = "#ffffff";
     document.getElementById("time").style.color = "#FFAB00";
     document.getElementById("time-value").style.webkitTextStroke = `2px ${"#FFAB00"}`;
-    document.getElementById("result").style.color = localStorage.getItem("av_colorText") ?? "#ffffff";
-    document.getElementById("av_btn").style.backgroundColor = localStorage.getItem("av_colorBtn") ?? "#FFAB00";
-    document.getElementById("av_btn").style.color = localStorage.getItem("av_colorTextBtn") ?? "#ffffff";
-    document.getElementById("av_btn").innerHTML = localStorage.getItem("av_btnText") ?? "GERAR NOVO TEMPO DE VELA";
-    document.getElementById("pb1").style.backgroundColor = localStorage.getItem("av_colorProgress") ?? "#000000";
+    document.getElementById("result").style.color = "#ffffff";
+    document.getElementById("av_btn").style.backgroundColor = "#FFAB00";
+    document.getElementById("av_btn").style.color = "#ffffff";
+    document.getElementById("av_btn").innerHTML = "GERAR NOVO TEMPO DE VELA";
+    document.getElementById("pb1").style.backgroundColor = "#000000";
 </script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js'></script>
 <script src="./scripts.js"></script>
