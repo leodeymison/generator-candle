@@ -38,7 +38,7 @@ function timer(){
     let bar = document.getElementById("pb1");
     let rocket = document.getElementById("rocket")
     let carga = 0;
-    const time = localStorage.getItem("av_time") ?? 5;
+    const time = 5;
     document.getElementById("av_btn_dis").innerHTML = "BUSCANDO..."
     let intBar = setInterval(function (){
         carga++;
