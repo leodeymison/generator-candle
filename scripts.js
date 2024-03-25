@@ -45,18 +45,15 @@ function timer(){
         bar.style.width = carga + "%";
         let rotate = carga * 20 > 90 ? 90 : carga * 20;
         rocket.style.transform = `rotate(${rotate}deg)`;
-        if(carga == 100){
-            carga = 0;
-            bar.style.width = "0%";
-            rocket.style.transform = `rotate(0deg)`;
-            ableddBtn()
-        }
     }, (time * 1000) / 100) 
 
     setTimeout(() => {
+        bar.style.width = "0%";
+        rocket.style.transform = `rotate(0deg)`;
+        ableddBtn()
         sort_func();
         clearInterval(intBar)
-    }, time * 1000)
+    }, (time * 1000) + 100)
 }
 
 function sort_func(){
