@@ -32,7 +32,6 @@ function ableddBtn(secunds){
         }, secunds * 1000)
     }
 }
-console.log(parseInt(localStorage.getItem("time_buttom")))
 if (parseInt(localStorage.getItem("time_buttom")) > 0) {
     ableddBtn(parseInt(localStorage.getItem("time_buttom")))
 }
@@ -117,14 +116,14 @@ function sort_func(){
 
         const date_current = document.getElementById("quant").innerHTML;
 
-        const new_date = 1 + ((Date.now() / 15000).toFixed(0)).substring(3);
-
+        const new_date = ((Date.now() / 15000).toFixed(0)).substring(3);
+        console.log(parseInt(date_current), parseInt(new_date))
         if(parseInt(date_current) == parseInt(new_date)){
             document.getElementById("quant").innerHTML = parseInt(new_date) + 1
             localStorage.setItem("data_current", `${parseInt(new_date) + 1}`)
         } else {
-            document.getElementById("quant").innerHTML = new_date
-            localStorage.setItem("data_current", new_date)
+            document.getElementById("quant").innerHTML = `${parseInt(new_date)}`
+            localStorage.setItem("data_current", `${parseInt(new_date)}`)
         }
     }
 }

@@ -44,7 +44,7 @@
                     <p class="p1">RODADA Nº <span style="color: #FFAB00;" id="quant">
                             <script>
                                 const data_current = localStorage.getItem("data_current");
-                                const calc = parseInt(1 + ((Date.now() / 15000).toFixed(0)).substring(3));
+                                const calc = parseInt(((Date.now() / 15000).toFixed(0)).substring(3));
                                 if (parseInt(data_current)) {
                                     if (parseInt(data_current) > calc) {
                                         document.getElementById("quant").innerHTML = data_current
