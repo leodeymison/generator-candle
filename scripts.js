@@ -1,3 +1,4 @@
+
 function start(){
     desabledBtn();
     som();
@@ -12,19 +13,28 @@ function desabledBtn(){
     document.getElementById("av_btn_dis").style.display = "block";
     document.getElementById("av_btn").style.display = "none";
 }
-function ableddBtn(){
-    const secunds = 15;
-    let count = 1;
-    let intBar = setInterval(function (){
-        document.getElementById("av_btn_dis").innerHTML = `AGUARDE (${secunds - count}s)`;
-        count++;
-    }, 1000) 
-
-    setTimeout(() => {
-        clearInterval(intBar);
-        document.getElementById("av_btn_dis").style.display = "none";
-        document.getElementById("av_btn").style.display = "block";
-    }, secunds * 1000)
+function ableddBtn(secunds){
+    if(secunds > 0){
+        document.getElementById("av_btn_dis").style.display = "block";
+        document.getElementById("av_btn").style.display = "none";
+        let count = 1;
+        let intBar = setInterval(function (){
+            document.getElementById("av_btn_dis").innerHTML = `AGUARDE (${secunds - count}s)`;
+            localStorage.setItem("time_buttom", `${secunds - count}`)
+            count++;
+        }, 1000) 
+    
+        setTimeout(() => {
+            clearInterval(intBar);
+            document.getElementById("av_btn_dis").style.display = "none";
+            document.getElementById("av_btn").style.display = "block";
+            localStorage.removeItem("time_buttom")
+        }, secunds * 1000)
+    }
+}
+console.log(parseInt(localStorage.getItem("time_buttom")))
+if (parseInt(localStorage.getItem("time_buttom")) > 0) {
+    ableddBtn(parseInt(localStorage.getItem("time_buttom")))
 }
 function som(){
     var audio = document.getElementById("meuAudio");
@@ -50,7 +60,7 @@ function timer(){
     setTimeout(() => {
         bar.style.width = "0%";
         rocket.style.transform = `rotate(0deg)`;
-        ableddBtn()
+        ableddBtn(15)
         sort_func();
         clearInterval(intBar)
     }, (time * 1000) + 100)
@@ -105,7 +115,17 @@ function sort_func(){
         indicatorValue.innerHTML += ` - ${list[randing].qual}`
         indicatorValue.style.color = list[randing].colors;
 
-        document.getElementById("quant").innerHTML = ((Date.now() / 1000).toFixed(0)).substring(3);
+        const date_current = document.getElementById("quant").innerHTML;
+
+        const new_date = 1 + ((Date.now() / 15000).toFixed(0)).substring(3);
+
+        if(parseInt(date_current) == parseInt(new_date)){
+            document.getElementById("quant").innerHTML = parseInt(new_date) + 1
+            localStorage.setItem("data_current", `${parseInt(new_date) + 1}`)
+        } else {
+            document.getElementById("quant").innerHTML = new_date
+            localStorage.setItem("data_current", new_date)
+        }
     }
 }
 
