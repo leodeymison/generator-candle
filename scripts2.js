@@ -1,11 +1,8 @@
+
 function start(){
-    if(localStorage.getItem("av-list")){
-        desabledBtn();
-        som();
-        timer();
-    } else {
-        alert("Preencha os dados de Configuração para tempos de vela")
-    }
+    desabledBtn();
+    som();
+    timer();
 }
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -16,19 +13,27 @@ function desabledBtn(){
     document.getElementById("av_btn_dis").style.display = "block";
     document.getElementById("av_btn").style.display = "none";
 }
-function ableddBtn(){
-    const secunds = localStorage.getItem("av_time_next") ?? 15;
-    let count = 1;
-    let intBar = setInterval(function (){
-        document.getElementById("av_btn_dis").innerHTML = `AGUARDE (${secunds - count}s)`;
-        count++;
-    }, 1000) 
-
-    setTimeout(() => {
-        clearInterval(intBar);
-        document.getElementById("av_btn_dis").style.display = "none";
-        document.getElementById("av_btn").style.display = "block";
-    }, secunds * 1000)
+function ableddBtn(secunds){
+    if(secunds > 0){
+        document.getElementById("av_btn_dis").style.display = "block";
+        document.getElementById("av_btn").style.display = "none";
+        let count = 1;
+        let intBar = setInterval(function (){
+            document.getElementById("av_btn_dis").innerHTML = `AGUARDE (${secunds - count}s)`;
+            localStorage.setItem("time_buttom", `${secunds - count}`)
+            count++;
+        }, 1000) 
+    
+        setTimeout(() => {
+            clearInterval(intBar);
+            document.getElementById("av_btn_dis").style.display = "none";
+            document.getElementById("av_btn").style.display = "block";
+            localStorage.removeItem("time_buttom")
+        }, secunds * 1000)
+    }
+}
+if (parseInt(localStorage.getItem("time_buttom")) > 0) {
+    ableddBtn(parseInt(localStorage.getItem("time_buttom")))
 }
 function som(){
     var audio = document.getElementById("meuAudio");
@@ -42,25 +47,22 @@ function timer(){
     let bar = document.getElementById("pb1");
     let rocket = document.getElementById("rocket")
     let carga = 0;
-    const time = localStorage.getItem("av_time") ?? 5;
+    const time = 5;
     document.getElementById("av_btn_dis").innerHTML = "BUSCANDO..."
     let intBar = setInterval(function (){
         carga++;
         bar.style.width = carga + "%";
         let rotate = carga * 20 > 90 ? 90 : carga * 20;
         rocket.style.transform = `rotate(${rotate}deg)`;
-        if(carga == 100){
-            carga = 0;
-            bar.style.width = "0%";
-            rocket.style.transform = `rotate(0deg)`;
-            ableddBtn()
-        }
     }, (time * 1000) / 100) 
 
     setTimeout(() => {
+        bar.style.width = "0%";
+        rocket.style.transform = `rotate(0deg)`;
+        ableddBtn(15)
         sort_func();
         clearInterval(intBar)
-    }, time * 1000)
+    }, (time * 1000) + 100)
 }
 
 function sort_func(){
@@ -104,17 +106,25 @@ function sort_func(){
     if (list.length > 0) {
         const randing = getRandomInt(0, list.length)
         document.getElementById("time-value").innerHTML = list[randing].times
-        let result = document.getElementById("indicator-value");
-        result.innerHTML = list[randing].names;
-        result.innerHTML += `<svg style="margin-top: -3px" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="mx-1 bi bi-flag-fill" viewBox="0 0 16 16">
+        let indicatorValue = document.getElementById("indicator-value");
+        indicatorValue.innerHTML = list[randing].names;
+        indicatorValue.innerHTML += `<svg style="margin-top: -3px" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="mx-1 bi bi-flag-fill" viewBox="0 0 16 16">
             <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001"/>
         </svg>`;
+        indicatorValue.innerHTML += ` - ${list[randing].qual}`
+        indicatorValue.style.color = list[randing].colors;
 
-        result.innerHTML += ` - ${list[randing].qual}`
+        const date_current = document.getElementById("quant").innerHTML;
 
-        result.style.color = list[randing].colors
-
-        document.getElementById("quant").innerHTML = ((Date.now() / 1000).toFixed(0)).substring(3);
+        const new_date = ((Date.now() / 15000).toFixed(0)).substring(3);
+        console.log(parseInt(date_current), parseInt(new_date))
+        if(parseInt(date_current) == parseInt(new_date)){
+            document.getElementById("quant").innerHTML = parseInt(new_date) + 1
+            localStorage.setItem("data_current", `${parseInt(new_date) + 1}`)
+        } else {
+            document.getElementById("quant").innerHTML = `${parseInt(new_date)}`
+            localStorage.setItem("data_current", `${parseInt(new_date)}`)
+        }
     }
 }
 

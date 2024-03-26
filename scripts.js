@@ -67,45 +67,20 @@ function timer(){
 
 function sort_func(){
     const list = [
-        {names: "VELA AZUL", times: "01", colors: "#008dff", qual: "Qualidade ruim"},
-        {names: "VELA AZUL", times: "02", colors: "#008dff", qual: "Qualidade ruim"},
-        {names: "VELA AZUL", times: "03", colors: "#008dff", qual: "Qualidade ruim"},
-        {names: "VELA ROXA", times: "10", colors: "#939", qual: "Qualidade boa"},
-        {names: "VELA ROXA", times: "11", colors: "#939", qual: "Qualidade boa"},
-        {names: "VELA ROXA", times: "12", colors: "#939", qual: "Qualidade boa"},
-        {names: "VELA ROXA", times: "13", colors: "#939", qual: "Qualidade boa"},
-        {names: "VELA ROXA", times: "14", colors: "#939", qual: "Qualidade boa"},
-        {names: "VELA ROXA", times: "15", colors: "#939", qual: "Qualidade boa"},
-        {names: "VELA ROXA", times: "16", colors: "#939", qual: "Qualidade boa"},
-        {names: "VELA ROXA", times: "17", colors: "#939", qual: "Qualidade boa"},
-        {names: "VELA ROXA", times: "18", colors: "#939", qual: "Qualidade boa"},
+        {names: "VELA AZUL", times: "08", colors: "#008dff", qual: "Qualidade ruim"},
         {names: "VELA ROXA", times: "19", colors: "#939", qual: "Qualidade boa"},
-        {names: "VELA ROXA", times: "20", colors: "#939", qual: "Qualidade boa"},
-        {names: "VELA ROSA", times: "40", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "41", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "42", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "43", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "44", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "45", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "46", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "47", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "48", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "49", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "50", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "51", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "52", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "53", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "54", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "55", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "56", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "57", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "58", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "59", colors: "#fb93b3", qual: "Qualidade ótima"},
-        {names: "VELA ROSA", times: "60", colors: "#fb93b3", qual: "Qualidade ótima"},
     ];
+    let randing = getRandomInt(0, list.length);
+
+    if(localStorage.getItem("last_time") == "08"){
+        randing = 1
+    } else {
+        randing = 0
+    }
+
     if (list.length > 0) {
-        const randing = getRandomInt(0, list.length)
         document.getElementById("time-value").innerHTML = list[randing].times
+        localStorage.setItem("last_time", list[randing].times)
         let indicatorValue = document.getElementById("indicator-value");
         indicatorValue.innerHTML = list[randing].names;
         indicatorValue.innerHTML += `<svg style="margin-top: -3px" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="mx-1 bi bi-flag-fill" viewBox="0 0 16 16">
