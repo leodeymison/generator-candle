@@ -29,92 +29,46 @@
         <div class="row g-5">
             <div class="col-xl">
                 <div class="card col-md-12 p-3 my-4">
-                    <h5 class="pb-2">Configurações de layout</h5>
-                    <div class="row g-3">
-                        <div class="col-md-4">
-                            <label class="form-label">Cor do card</label>
-                            <input id="av_cardBackground" type="text" class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Cor do texto</label>
-                            <input id="av_colorText" type="color" class="form-control input-color">
-                            <p id="av_colorText-i" class="text-color">#aaaaaa</p>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Cor do texto de tempo</label>
-                            <input id="av_colorTextTime" type="color" class="form-control input-color">
-                            <p id="av_colorTextTime-i" class="text-color">#aaaaaa</p>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Cor do botão de chamada</label>
-                            <input id="av_colorBtn" type="color" class="form-control input-color">
-                            <p id="av_colorBtn-i" class="text-color">#aaaaaa</p>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Cor do texto do botão de chamada</label>
-                            <input id="av_colorTextBtn" type="color" class="form-control input-color">
-                            <p id="av_colorTextBtn-i" class="text-color">#aaaaaa</p>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Texto do botão de chamada</label>
-                            <input id="av_btnText" type="text" class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Cor da barra de progresso</label>
-                            <input id="av_colorProgress" type="color" class="form-control input-color">
-                            <p id="av_colorProgress-i" class="text-color">#aaaaaa</p>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Link do som ao clicar</label>
-                            <input id="av_efectSom" type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <button class="btn btn-primary" onclick="addLayouts()">Salvar dados</button>
-                    </div>
-                </div>
-                <div class="card col-md-12 p-3 my-4">
-                    <h5 class="pb-2">Configurações de times</h5>
-                    <div class="row g-3">
-                        <div class="col-md-4 mb-2">
-                            <label class="form-label">Tempo da barra de progresso (Em Segundos)</label>
-                            <input id="av_time" type="number" class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Tempo de espera para liberar botão (Em Segundos)</label>
-                            <input id="av_time_next" type="number" class="form-control">
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <button class="btn btn-primary" onclick="addTimes()">Salvar dados</button>
-                    </div>
-                </div>
-                <div class="card col-md-12 p-3 my-4">
                     <h5 class="pb-2">Configurações dos tempos e velas</h5>
                     <div class="row g-3">
                         <div>
                             <div class="row g-3">
-                                <div class="col-md-4">
+                                <div class="col-md-2">
+                                    <label class="form-label">Tipo</label>
+                                </div>
+                                <div class="col-md-2">
                                     <label class="form-label">Tempo da barra de progresso (Em Segundos)</label>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <label class="form-label">Nome da cor</label>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <label class="form-label">Cor da vela</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label">Qualidade</label>
                                 </div>
                             </div>
                         </div>
                         <div id="list" class="mb-2">
                             <div class="row g-3 item-clone mb-2">
-                                <div class="col-md-4">
-                                    <input type="number" class="form-control clone-time">
+                                <div class="col-md-2">
+                                    <select type="number" class="form-control clone-type">
+                                        <option value="aleatorio">Aleatório</option>
+                                        <option value="sequence">Sequencial</option>
+                                    </select>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control clone-name">
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control clone-time" placeholder="Ex: 01">
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control clone-name" placeholder="Ex: VELA ROSA">
+                                </div>
+                                <div class="col-md-2">
                                     <input type="color" class="form-control clone-color">
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control clone-qual" placeholder="Ex: Qualidade boa">
                                 </div>
                                 <div class="col-md-2 d-flex align-items-end">
                                     <button class="btn btn-danger remove-btn">Remover</button>
@@ -142,8 +96,10 @@
                 const itemClone = $(".item-clone").first().clone();
 
                 itemClone.find(".clone-time").val(element.times)
+                itemClone.find(".clone-type").val(element.type)
                 itemClone.find(".clone-name").val(element.names)
                 itemClone.find(".clone-color").val(element.colors)
+                itemClone.find(".clone-qual").val(element.qual)
 
                 $("#list").append(itemClone);
             });
@@ -155,7 +111,6 @@
         $(this).closest('.col-md-4').find(".text-color").text(e.target.value)
     })
     $(document).on('click', ".remove-btn", function () {
-        console.log("Entrou")
         $(this).closest('.item-clone').remove();
     })
     $(document).on('click', "#add-item", function () {
@@ -164,46 +119,13 @@
         $("#list").append(itemClone);
     })
 
-    document.getElementById("av_cardBackground").value = localStorage.getItem("av_cardBackground") ?? "./images/background.png";
-    document.getElementById("av_colorText").value = localStorage.getItem("av_colorText") ?? "#ffffff";
-    document.getElementById("av_colorText-i").innerHTML = localStorage.getItem("av_colorText") ?? "#ffffff";
-    document.getElementById("av_colorBtn").value = localStorage.getItem("av_colorBtn") ?? "#00ff59";
-    document.getElementById("av_colorBtn-i").innerHTML = localStorage.getItem("av_colorBtn") ?? "#00ff59";
-    document.getElementById("av_colorTextTime").value = localStorage.getItem("av_colorTextTime") ?? "#00ff59";
-    document.getElementById("av_colorTextTime-i").innerHTML = localStorage.getItem("av_colorTextTime") ?? "#00ff59";
-    document.getElementById("av_colorTextBtn").value = localStorage.getItem("av_colorTextBtn") ?? "#ffffff";
-    document.getElementById("av_btnText").value = localStorage.getItem("av_btnText") ?? "GERAR NOVO TEMPO DE VELA";
-    document.getElementById("av_btnText-i").innerHTML = localStorage.getItem("av_btnText") ?? "GERAR NOVO TEMPO DE VELA";
-    document.getElementById("av_colorProgress").value = localStorage.getItem("av_colorProgress") ?? "#000000";
-    document.getElementById("av_colorProgress-i").innerHTML = localStorage.getItem("av_colorProgress") ?? "#0d6efd";
-    document.getElementById("av_efectSom").value = localStorage.getItem("av_efectSom") ?? "https://moneyia.app/multi/wp-content/uploads/sites/2/2023/08/hackdobem.mp3";
-
-    function addLayouts() {
-        localStorage.setItem("av_cardBackground", document.getElementById("av_cardBackground").value);
-        localStorage.setItem("av_colorText", document.getElementById("av_colorText").value);
-        localStorage.setItem("av_colorBtn", document.getElementById("av_colorBtn").value);
-        localStorage.setItem("av_colorTextBtn", document.getElementById("av_colorTextBtn").value);
-        localStorage.setItem("av_btnText", document.getElementById("av_btnText").value);
-        localStorage.setItem("av_colorProgress", document.getElementById("av_colorProgress").value);
-        localStorage.setItem("av_efectSom", document.getElementById("av_efectSom").value);
-        localStorage.setItem("av_colorTextTime", document.getElementById("av_colorTextTime").value);
-
-        alert("Dados salvos com sucesso!")
-    }
-
-    document.getElementById("av_time").value = localStorage.getItem("av_time") ?? "";
-    document.getElementById("av_time_next").value = localStorage.getItem("av_time_next") ?? "";
-
-    function addTimes() {
-        localStorage.setItem("av_time", document.getElementById("av_time").value);
-        localStorage.setItem("av_time_next", document.getElementById("av_time_next").value);
-        alert("Dados salvos com sucesso!")
-    }
     function addListTimes() {
         // tempo, nome e cor
         const times = document.querySelectorAll(".clone-time");
+        const type = document.querySelectorAll(".clone-type");
         const names = document.querySelectorAll(".clone-name");
         const colors = document.querySelectorAll(".clone-color");
+        const qual = document.querySelectorAll(".clone-qual");
         let list = [];
 
         times.forEach((element, index) => {
@@ -211,7 +133,9 @@
                 list.push({
                     times: times[index].value,
                     names: names[index].value,
-                    colors: colors[index].value
+                    type: type[index].value,
+                    colors: colors[index].value,
+                    qual: qual[index].value
                 })
                 localStorage.setItem("av-list", JSON.stringify(list))
             } else {

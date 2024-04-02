@@ -64,18 +64,39 @@ function timer(){
         clearInterval(intBar)
     }, (time * 1000) + 100)
 }
+localStorage.removeItem("last_time");
 
 function sort_func(){
-    const list = [
-        {names: "VELA AZUL", times: "08", colors: "#008dff", qual: "Qualidade ruim"},
-        {names: "VELA ROXA", times: "19", colors: "#939", qual: "Qualidade boa"},
-    ];
-    let randing = getRandomInt(0, list.length);
+    const dataLocal = localStorage.getItem("av-list");
+    let list = [];
+    if(dataLocal){
+        list = JSON.parse(dataLocal);
+    }
 
-    if(localStorage.getItem("last_time") == "08"){
-        randing = 1
-    } else {
-        randing = 0
+    let randing = getRandomInt(0, list.length);
+    let loadType = false;
+
+    if(list[0].type == "sequence" && loadType == false){
+        if(localStorage.getItem("last_time")){
+            list.forEach((element, index) => {
+                if(
+                    element.times == localStorage.getItem("last_time") &&
+                    element.type == "sequence"
+                ){
+                    if(list[index + 1]){ // Se pŕoximo existir
+                        if(list[index + 1].type == "sequence"){
+                            randing = index + 1;
+                        } else { // Próximo é aleatório
+                            loadType = true;
+                        }
+                    } else {
+                        randing = 0;
+                    }
+                }
+            });
+        } else {
+            randing = 0;
+        }
     }
 
     if (list.length > 0) {
